@@ -1,0 +1,26 @@
+﻿@page "/TestPage2"
+@inject NavigationManager navManager
+@using System.Web;
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
+
+
+<h3>TestPage2</h3>
+<p>Parameter 1</p>
+<p>@param1</p>
+<p>Parameter 2</p>
+<p>@param2</p>
+
+@code {
+    string param1, param2;
+
+    protected override Task OnInitializedAsync()
+    {
+        var qparams = HttpUtility.ParseQueryString(new Uri(navManager.Uri).Query);
+        param1 = qparams["param1"];
+        param2 = qparams["param2"];
+
+        return base.OnInitializedAsync();
+    }
+
+}

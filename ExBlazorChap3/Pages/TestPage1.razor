@@ -1,0 +1,16 @@
+﻿@page "/TestPage1/{param1}/{param2}"
+<h3>TestPage1</h3>
+<p>parameter1</p>
+<p>@param1</p>
+<p>parameter2</p>
+<p>@param2</p>
+
+@code {
+
+    [Parameter]
+    public string param1 { get; set; }
+    [Parameter]
+    public string param2 { get; set; }
+}
+
+
