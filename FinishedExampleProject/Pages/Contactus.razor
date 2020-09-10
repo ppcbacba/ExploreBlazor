@@ -1,0 +1,34 @@
+﻿@inject Data.ContactService cnservice
+
+<h3>Contact us</h3>
+<p>Name</p>
+<p><input @bind="@name"/></p>
+<p>Email</p>
+<p><input @bind="@email"/></p>
+<p>Message</p>
+<p><textarea @bind="@message"/></p>
+<p><button @onclick="@(()=>SendMessageAsync())">Send</button></p>
+
+@if (displayboxopened)
+{
+    <p>@displayboxmessage</p>
+}
+@code {
+    public string name { get; set; }
+    public string email { get; set; }
+    public string message { get; set; }
+    public bool displayboxopened = false;
+    public string displayboxmessage;
+
+    public async void SendMessageAsync()
+    {
+        if (await cnservice.SendMessage(name, email, message))
+        {
+            displayboxmessage = "Message send successfully";
+            displayboxopened = true;
+            await Task.Delay(7000);
+            displayboxopened = false;
+
+        }
+    }
+}

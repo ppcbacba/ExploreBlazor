@@ -9,3 +9,21 @@
 <div style="width: 33%">
     <h1>Paints and other Products</h1>
 </div>
+<table class="table">
+    <thead>
+    <tr>
+        <td>coupon</td>
+        <td>info</td>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var key in Program.CouponDictionary.Keys)
+        {
+            <tr>
+                <td>@key.ToString()</td>
+                <td><a href="/InfoPage/@key.ToString()">Info</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>

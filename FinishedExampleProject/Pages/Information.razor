@@ -1,5 +1,5 @@
 ﻿@page "/InfoPage/{coupon}"
-@page "/Info"
+@page "/InfoPage"
 @inject Data.CouponService CpnService
 
 <div style="width: 33%">
@@ -36,6 +36,6 @@
     {
         discountvalue=await CpnService.CheckCoupon(coupon);
 
-        base.OnInitializedAsync();
+        await base.OnInitializedAsync();
     }
 }
